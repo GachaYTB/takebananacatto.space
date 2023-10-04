@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaClFbZCE7ZiCYgP5vaEHzGVQdmpI6BrQ7B_3pC9ytqE5wi9aWCyl97U8gqq8MnD3tk0-8S9HjOOhtYzlA-kvfL3JV9ecw=w1868-h867">
+        <title>take bananacat to space</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@700&display=swap');
+            * {
+                font-family: 'Source Sans 3', sans-serif;
+            }
+            body {
+                background-color: rgb(35, 38, 61);
+            }
+            button {
+                background-color: rgb(57, 57, 57);
+                border-radius: 10px;
+            }
+            button:hover {
+                background-color: rgb(105, 105, 105);
+                cursor: pointer;
+                transition: ease-in 0.25s;
+            }
+            button:not(:hover) {
+                background-color: rgb(57, 57, 57);
+                cursor: none;
+                transition: ease 0.25s;
+            }
+            button:active {
+                background-color: rgb(159, 159, 159);
+                transition: ease-in 0.1s;
+            }
+            img {
+                animation: weeee 0.175s;
+                animation-iteration-count: infinite;
+            }
+            @keyframes weeee {
+                0% { transform: translate(4px, 4px) rotate(0deg); }
+                10% { transform: translate(-4px, -8px) rotate(-1.5deg); }
+                20% { transform: translate(-12px, 0px) rotate(1.5deg); }
+                30% { transform: translate(8px, 8px) rotate(0deg); }
+                40% { transform: translate(4px, -4px) rotate(1.5deg); }
+                50% { transform: translate(-4px, 8px) rotate(-1.5deg); }
+                60% { transform: translate(-12px, 4px) rotate(0deg); }
+                70% { transform: translate(12px, 4px) rotate(-1.5deg); }
+                80% { transform: translate(-4px, -8px) rotate(1.5deg); }
+                90% { transform: translate(4px, 8px) rotate(0deg); }
+                100% { transform: translate(4px, -8px) rotate(-1.5deg); }
+            }
+        </style>
+    </head>
+    <body>
+        <img id="bananacatnrocket" style="height: 30%; width: 17.5%; margin-left: 350px; margin-top: 100px;" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaDKFlE7TPQGfC4ip7OFOK2rriuIJssvlCfDCJAjau2RqbpmrKZiXL9NJ77q9eWh2qksVSmGNvJPMX_317vRXr9HOCJG=w1868-h867">
+        <button style="color: rgb(255, 255, 255);" id="startmusicbutton">click me to start some music</button>
+        <script>
+var musicpaths = [
+  'assets/music/Dunderpatrullen%20-%20To%20The%20Moon.mp3',
+  'assets/music/Big Giant Circles - Go For Distance.mp3',
+  'assets/music/Bag Raiders - Shooting Stars.mp3',
+  'assets/music/NOMA - Brain Power.mp3',
+  'assets/music/Hans Zimmer - Time (Aviators Remix).mp3',
+  'assets/music/Danny Baranowsky - Moonsong.mp3'
+];
+var musicrandomizer = Math.floor(Math.random() * musicpaths.length);
+var audio = new Audio("https://takeb1nzyto.space/" + musicpaths[musicrandomizer]);
+var firsttime = true;
+var musicButton = document.getElementById("startmusicbutton");
+/**
+ * Here i change the button on click if the user is listening for
+ * the first time if not it will be play random music
+ */
+function changebuttononclick() {
+  if (firsttime) {
+    musicButton.innerText = "skip music";
+    musicButton.onclick = skipmusic;
+  } else {
+    musicButton.innerText = "click me to start some music";
+    musicButton.onclick = playrandomaudio;
+  }
+  console.log("[Music Button]: Successfully changed the button script & the button text!");
+}
+/** Basically your function
+ * but slightly refactored to be more readable.
+ */
+function playrandomaudio() {
+  if (audio) {
+    audio.pause();
+    audio = null; // delete the previously playing song to keep performance up
+  }
+  document.getElementById('startmusicbutton').innerText = "skip song";
+  musicrandomizer = Math.floor(Math.random() * musicpaths.length);
+  audio = new Audio("https://takeb1nzyto.space/" + musicpaths[musicrandomizer]);
+  audio.load();
+  console.log("[Player]: Successfully created a new audio element!");
+  audio.play();
+  console.log("[Player]: Successfully played the song!");
+  audio.onended = changebuttononclick;
+  firsttime = true;
+}
+/**
+ * To skip the music we basically pause the audio and put the audio back to start.
+ */
+function skipmusic() {
+  audio.pause();
+  audio.currentTime = 0;
+  changebuttononclick();
+}
+
+document.getElementById('startmusicbutton').onclick = playrandomaudio;
+document.getElementById('startmusicbutton').innerText = "click me to start some music";
+        </script>
+    </body>
+</html>
