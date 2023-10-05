@@ -55,15 +55,23 @@
         <button style="color: rgb(255, 255, 255);" id="startmusicbutton">click me to start some music</button>
         <script>
 var musicpaths = [
-  'assets/music/Dunderpatrullen%20-%20To%20The%20Moon.mp3',
-  'assets/music/Big Giant Circles - Go For Distance.mp3',
-  'assets/music/Bag Raiders - Shooting Stars.mp3',
-  'assets/music/NOMA - Brain Power.mp3',
-  'assets/music/Hans Zimmer - Time (Aviators Remix).mp3',
-  'assets/music/Danny Baranowsky - Moonsong.mp3'
+  'https://takeb1nzyto.space/assets/music/Dunderpatrullen%20-%20To%20The%20Moon.mp3',
+  'https://takeb1nzyto.space/assets/music/Big Giant Circles - Go For Distance.mp3',
+  'https://takeb1nzyto.space/assets/music/Bag Raiders - Shooting Stars.mp3',
+  'https://takeb1nzyto.space/assets/music/NOMA - Brain Power.mp3',
+  'https://takeb1nzyto.space/assets/music/Hans Zimmer - Time (Aviators Remix).mp3',
+  'https://takeb1nzyto.space/assets/music/Danny Baranowsky - Moonsong.mp3',
+  'assets/musics/Big Weenie - Eminem (Lyrics).mp3',
+  'assets/musics/GRIMACE - CG5 (Original Song) (1).mp3',
+  'assets/musics/HATENA - MOVES.mp3',
+  'assets/musics/Joey Trap - Sesame Street (Instrumental).mp3',
+  'assets/musics/LMFAO ft. Lauren Bennett, GoonRock - Party Rock Anthem (Official Audio).mp3',
+  'assets/musics/Los Del Rio - Macarena (Bayside Boys Remix).mp3',
+  'assets/musics/Radiohead - No Surprises.mp3',
+  'assets/musics/Shiloh Dynasty - Novacaine - [Speed up].mp3'
 ];
 var musicrandomizer = Math.floor(Math.random() * musicpaths.length);
-var audio = new Audio("https://takeb1nzyto.space/" + musicpaths[musicrandomizer]);
+var audio = new Audio(musicpaths[musicrandomizer]);
 var firsttime = true;
 var musicButton = document.getElementById("startmusicbutton");
 /**
@@ -90,7 +98,7 @@ function playrandomaudio() {
   }
   document.getElementById('startmusicbutton').innerText = "skip song";
   musicrandomizer = Math.floor(Math.random() * musicpaths.length);
-  audio = new Audio("https://takeb1nzyto.space/" + musicpaths[musicrandomizer]);
+  audio = new Audio(musicpaths[musicrandomizer]);
   audio.load();
   console.log("[Player]: Successfully created a new audio element!");
   audio.play();
