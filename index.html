@@ -99,10 +99,6 @@ var musicrandomizer = Math.floor(Math.random() * musicpaths.length);
 var audio = new Audio(musicpaths[musicrandomizer]);
 var firsttime = true;
 var musicButton = document.getElementById("startmusicbutton");
-/**
- * Here i change the button on click if the user is listening for
- * the first time if not it will be play random music
- */
 function changebuttononclick() {
   if (firsttime) {
     musicButton.innerText = "skip music";
@@ -113,13 +109,10 @@ function changebuttononclick() {
   }
   console.log("[Music Button]: Successfully changed the button script & the button text!");
 }
-/** Basically your function
- * but slightly refactored to be more readable.
- */
 function playrandomaudio() {
   if (audio) {
     audio.pause();
-    audio = null; // delete the previously playing song to keep performance up
+    audio = null;
   }
   document.getElementById('startmusicbutton').innerText = "Skip Song";
   musicrandomizer = Math.floor(Math.random() * musicpaths.length);
@@ -130,12 +123,9 @@ function playrandomaudio() {
   console.log("[Player]: Successfully played the song!");
   document.getElementById('musictext').innerText = "Playing: " + musicnames[musicrandomizer];
   console.log("[Music Text]: Successfully changed the music text!")
-  audio.onended = changebuttononclick;
+  audio.onended = playrandomaudio;
   firsttime = true;
 }
-/**
- * To skip the music we basically pause the audio and put the audio back to start.
- */
 function skipmusic() {
   audio.pause();
   audio.currentTime = 0;
