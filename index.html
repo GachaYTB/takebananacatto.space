@@ -52,9 +52,10 @@
     </head>
     <body>
         <img id="bananacatnrocket" style="height: 30%; width: 17.5%; margin-left: 350px; margin-top: 100px;" src="assets/images/bananacatnrocket.png">
-        <button style="color: rgb(255, 255, 255);" id="startmusicbutton">click me to start some music</button>
+        <button style="color: rgb(255, 255, 255);" id="startmusicbutton">Click to start some music</button>
+        <h1 style="color: rgb(255, 255, 255); margin-left: 610px;" id="musictext">Playing: Nothing</h1>
         <script>
-var musicpaths = [
+const musicpaths = [
   'https://takeb1nzyto.space/assets/music/Dunderpatrullen%20-%20To%20The%20Moon.mp3',
   'https://takeb1nzyto.space/assets/music/Big Giant Circles - Go For Distance.mp3',
   'https://takeb1nzyto.space/assets/music/Bag Raiders - Shooting Stars.mp3',
@@ -74,6 +75,26 @@ var musicpaths = [
   "assets/musics/Odetari - I LOVE YOU HOE (w 9lives) [Official Music Video].mp3",
   "assets/musics/Your To Slow - Odetari.mp3"
 ];
+const musicnames = [
+  'Dunderpatrullen - To The Moon',
+  'Big Giant Circles - Go For Distance.',
+  'Bag Raiders - Shooting Stars.',
+  'NOMA - Brain Power.',
+  'Hans Zimmer - Time (Aviators Remix).',
+  'Danny Baranowsky - Moonsong.',
+  'Big Weenie - Eminem.',
+  'GRIMACE - CG5.',
+  'HATENA - MOVES.',
+  'Joey Trap - Sesame Street (Instrumental).',
+  'LMFAO ft. Lauren Bennett, GoonRock - Party Rock Anthem.',
+  'Los Del Rio - Macarena (Bayside Boys Remix).',
+  'Radiohead - No Surprises.',
+  'Shiloh Dynasty - Novacaine - [Speed up].',
+  "ODETARI - GMFU (w 6arelyhuman).",
+  "ODETARI - GOOD LOYAL THOTS.",
+  "Odetari - I LOVE YOU HOE (w 9lives).",
+  "Your To Slow - Odetari"     
+]
 var musicrandomizer = Math.floor(Math.random() * musicpaths.length);
 var audio = new Audio(musicpaths[musicrandomizer]);
 var firsttime = true;
@@ -87,7 +108,7 @@ function changebuttononclick() {
     musicButton.innerText = "skip music";
     musicButton.onclick = skipmusic;
   } else {
-    musicButton.innerText = "click me to start some music";
+    musicButton.innerText = "Click to start some music";
     musicButton.onclick = playrandomaudio;
   }
   console.log("[Music Button]: Successfully changed the button script & the button text!");
@@ -100,13 +121,15 @@ function playrandomaudio() {
     audio.pause();
     audio = null; // delete the previously playing song to keep performance up
   }
-  document.getElementById('startmusicbutton').innerText = "skip song";
+  document.getElementById('startmusicbutton').innerText = "Skip Song";
   musicrandomizer = Math.floor(Math.random() * musicpaths.length);
   audio = new Audio(musicpaths[musicrandomizer]);
   audio.load();
   console.log("[Player]: Successfully created a new audio element!");
   audio.play();
   console.log("[Player]: Successfully played the song!");
+  document.getElementById('musictext').innerText = "Playing: " + musicnames[musicrandomizer];
+  console.log("[Music Text]: Successfully changed the music text!")
   audio.onended = changebuttononclick;
   firsttime = true;
 }
@@ -120,7 +143,7 @@ function skipmusic() {
 }
 
 document.getElementById('startmusicbutton').onclick = playrandomaudio;
-document.getElementById('startmusicbutton').innerText = "click me to start some music";
+document.getElementById('startmusicbutton').innerText = "Click to start some music";
         </script>
     </body>
 </html>
