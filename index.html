@@ -133,6 +133,14 @@ function skipmusic() {
   audio.currentTime = 0;
   changebuttononclick();
 }
+document.addEventListener("keydown", function(event) {
+        // The event object contains information about the key press
+        const keyPressed = event.key;
+        if (keyPressed == "s") {
+          skipmusic()
+          playrandomaudio()
+        }
+});
 
 document.getElementById('startmusicbutton').onclick = playrandomaudio;
 document.getElementById('startmusicbutton').innerText = "Click to start some music";
