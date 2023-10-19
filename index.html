@@ -5,51 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="assets/images/bananacaticon.ico">
         <title>take bananacat to space</title>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@700&display=swap');
-            * {
-                font-family: 'Source Sans 3', sans-serif;
-            }
-            body {
-              margin: 0;
-              overflow: hidden;
-              background: url('assets/images/outer space.png');
-            }
-            button {
-                background-color: rgb(57, 57, 57);
-                border-radius: 10px;
-            }
-            button:hover {
-                background-color: rgb(105, 105, 105);
-                cursor: pointer;
-                transition: ease-in 0.25s;
-            }
-            button:not(:hover) {
-                background-color: rgb(57, 57, 57);
-                cursor: none;
-                transition: ease 0.25s;
-            }
-            button:active {
-                background-color: rgb(159, 159, 159);
-                transition: ease-in 0.1s;
-            }
-            img {
-                animation: weeee 0.175s infinite;
-            }
-            @keyframes weeee {
-                0% { transform: translate(4px, 4px) rotate(0deg); }
-                10% { transform: translate(-4px, -8px) rotate(-1.5deg); }
-                20% { transform: translate(-12px, 0px) rotate(1.5deg); }
-                30% { transform: translate(8px, 8px) rotate(0deg); }
-                40% { transform: translate(4px, -4px) rotate(1.5deg); }
-                50% { transform: translate(-4px, 8px) rotate(-1.5deg); }
-                60% { transform: translate(-12px, 4px) rotate(0deg); }
-                70% { transform: translate(12px, 4px) rotate(-1.5deg); }
-                80% { transform: translate(-4px, -8px) rotate(1.5deg); }
-                90% { transform: translate(4px, 8px) rotate(0deg); }
-                100% { transform: translate(4px, -8px) rotate(-1.5deg); }
-            }
-        </style> <!-- This is the original style code, don't let you get fooled by github's... uh... scam links? ill never check them so yea just to say this is the original one. -->
+        <link rel="stylesheet" href="style.css"> <!-- This is the original style source code, don't let you get fooled by github's... uh... scam links? ill never check them so yea just to say this is the original one. -->
     </head>
     <body>
         <img id="bananacatnrocket" style="height: 30%; width: 17.5%; margin-left: 350px; margin-top: 100px;" src="assets/images/bananacatnrocket.png">
@@ -57,94 +13,6 @@
         <h1 style="color: rgb(255, 255, 255); margin-left: 610px;" id="musictext">Playing: Nothing</h1>
         <h1 style="color: rgb(255, 255, 255); margin-left: 610px; font-size: 19px;">This website was made to try and recreate the takeb1nzyto.space website, i didn't copy it.</h1>
         <a href="https://www.youtube.com/channel/UCIquvBTttg13BEAxqFxIpiQ" style="color: rgb(255, 255, 255); font-size: 15px;">Website made by GachaYTB3</a>
-        <script>
-const musicpaths = [
-  'https://takeb1nzyto.space/assets/music/Dunderpatrullen%20-%20To%20The%20Moon.mp3',
-  'https://takeb1nzyto.space/assets/music/Big Giant Circles - Go For Distance.mp3',
-  'https://takeb1nzyto.space/assets/music/Bag Raiders - Shooting Stars.mp3',
-  'https://takeb1nzyto.space/assets/music/NOMA - Brain Power.mp3',
-  'https://takeb1nzyto.space/assets/music/Hans Zimmer - Time (Aviators Remix).mp3',
-  'https://takeb1nzyto.space/assets/music/Danny Baranowsky - Moonsong.mp3',
-  'assets/musics/Big Weenie - Eminem (Lyrics).mp3',
-  'assets/musics/GRIMACE - CG5 (Original Song) (1).mp3',
-  'assets/musics/HATENA - MOVES.mp3',
-  'assets/musics/Joey Trap - Sesame Street (Instrumental).mp3',
-  'assets/musics/LMFAO ft. Lauren Bennett, GoonRock - Party Rock Anthem (Official Audio).mp3',
-  'assets/musics/Los Del Rio - Macarena (Bayside Boys Remix).mp3',
-  'assets/musics/Radiohead - No Surprises.mp3',
-  'assets/musics/Shiloh Dynasty - Novacaine - [Speed up].mp3',
-  "assets/musics/ODETARI - GMFU (w 6arelyhuman) [Official Audio].mp3",
-  "assets/musics/ODETARI - GOOD LOYAL THOTS (Official Audio).mp3",
-  "assets/musics/Odetari - I LOVE YOU HOE (w 9lives) [Official Music Video].mp3",
-  "assets/musics/Your To Slow - Odetari.mp3"
-];
-const musicnames = [
-  'Dunderpatrullen - To The Moon',
-  'Big Giant Circles - Go For Distance.',
-  'Bag Raiders - Shooting Stars.',
-  'NOMA - Brain Power.',
-  'Hans Zimmer - Time (Aviators Remix).',
-  'Danny Baranowsky - Moonsong.',
-  'Big Weenie - Eminem.',
-  'GRIMACE - CG5.',
-  'HATENA - MOVES.',
-  'Joey Trap - Sesame Street (Instrumental).',
-  'LMFAO ft. Lauren Bennett, GoonRock - Party Rock Anthem.',
-  'Los Del Rio - Macarena (Bayside Boys Remix).',
-  'Radiohead - No Surprises.',
-  'Shiloh Dynasty - Novacaine - [Speed up].',
-  "ODETARI - GMFU (w 6arelyhuman).",
-  "ODETARI - GOOD LOYAL THOTS.",
-  "Odetari - I LOVE YOU HOE (w 9lives).",
-  "Your To Slow - Odetari"     
-]
-var musicrandomizer = Math.floor(Math.random() * musicpaths.length);
-var audio = new Audio(musicpaths[musicrandomizer]);
-var firsttime = true;
-var musicButton = document.getElementById("startmusicbutton");
-function changebuttononclick() {
-  if (firsttime) {
-    musicButton.innerText = "skip music";
-    musicButton.onclick = skipmusic;
-  } else {
-    musicButton.innerText = "Click to start some music";
-    musicButton.onclick = playrandomaudio;
-  }
-  console.log("[Music Button]: Successfully changed the button script & the button text!");
-}
-function playrandomaudio() {
-  if (audio) {
-    audio.pause();
-    audio = null;
-  }
-  document.getElementById('startmusicbutton').innerText = "Skip Song";
-  musicrandomizer = Math.floor(Math.random() * musicpaths.length);
-  audio = new Audio(musicpaths[musicrandomizer]);
-  audio.load();
-  console.log("[Player]: Successfully created a new audio element!");
-  audio.play();
-  console.log("[Player]: Successfully played the song!");
-  document.getElementById('musictext').innerText = "Playing: " + musicnames[musicrandomizer];
-  console.log("[Music Text]: Successfully changed the music text!")
-  audio.onended = playrandomaudio;
-  firsttime = true;
-}
-function skipmusic() {
-  audio.pause();
-  audio.currentTime = 0;
-  changebuttononclick();
-  playrandomaudio()
-}
-document.addEventListener("keydown", function(event) {
-        // The event object contains information about the key press
-        const keyPressed = event.key;
-        if (keyPressed == "s") {
-          skipmusic()
-        }
-});
-
-document.getElementById('startmusicbutton').onclick = playrandomaudio;
-document.getElementById('startmusicbutton').innerText = "Click to start some music";
-        </script>
     </body>
+    <script src="script.js"></script>
 </html>

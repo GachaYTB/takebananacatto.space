@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@700&display=swap');
+* {
+    font-family: 'Source Sans 3', sans-serif;
+}
+body {
+    margin: 0;
+    overflow: hidden;
+    background: url('assets/images/outer space.png');
+}
+button {
+    background-color: rgb(57, 57, 57);
+    border-radius: 10px;
+}
+button:hover {
+    background-color: rgb(105, 105, 105);
+    cursor: pointer;
+    transition: ease-in 0.25s;
+}
+button:not(:hover) {
+    background-color: rgb(57, 57, 57);
+    cursor: none;
+    transition: ease 0.25s;
+}
+button:active {
+    background-color: rgb(159, 159, 159);
+    transition: ease-in 0.1s;
+}
+img {
+    animation: weeee 0.175s infinite;
+}
+@keyframes weeee {
+    0% { transform: translate(4px, 4px) rotate(0deg); }
+    10% { transform: translate(-4px, -8px) rotate(-1.5deg); }
+    20% { transform: translate(-12px, 0px) rotate(1.5deg); }
+    30% { transform: translate(8px, 8px) rotate(0deg); }
+    40% { transform: translate(4px, -4px) rotate(1.5deg); }
+    50% { transform: translate(-4px, 8px) rotate(-1.5deg); }
+    60% { transform: translate(-12px, 4px) rotate(0deg); }
+    70% { transform: translate(12px, 4px) rotate(-1.5deg); }
+    80% { transform: translate(-4px, -8px) rotate(1.5deg); }
+    90% { transform: translate(4px, 8px) rotate(0deg); }
+    100% { transform: translate(4px, -8px) rotate(-1.5deg); }
+}
